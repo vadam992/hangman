@@ -3,13 +3,13 @@
     <canvas ref="mycanvas" width="100" height="190" 
             v-bind:class="{'zoom' : fails == 8}"/>
     <div id="progress">
-    <b-progress :value="8-fails" :max="8" animated></b-progress>
+    <b-progress :value="8 - fails" :max="8" animated></b-progress>
     </div>
-    <div v-if="fails >=0 && fails <8">
+    <div v-if="fails >= 0 && fails < 8">
     Attempts left
-        <b-badge v-if="fails < 3" variant="success">{{8-fails}}</b-badge>
-        <b-badge v-else-if="fails < 5" variant="warning">{{8-fails}}</b-badge>
-        <b-badge v-else variant="danger">{{8-fails}}</b-badge>
+        <b-badge v-if="fails < 3" variant="success">{{8 - fails}}</b-badge>
+        <b-badge v-else-if="fails < 5" variant="warning">{{8 - fails}}</b-badge>
+        <b-badge v-else variant="danger">{{8 - fails}}</b-badge>
      </div>
     <div v-else-if="fails == 8">
     Game over! 
@@ -35,17 +35,17 @@ export default {
 
       if(this.fails == 1) {
         ctx.beginPath();
-        ctx.moveTo(50, 20);
-        ctx.lineTo(50, 0);
-        ctx.lineTo(10, 0);
-        ctx.lineTo(10, 180);
+        ctx.moveTo(40, 180);
+        ctx.lineTo(0, 180);
         ctx.stroke();
       }
 
       if(this.fails == 2) {
         ctx.beginPath();
-        ctx.moveTo(40, 180);
-        ctx.lineTo(0, 180);
+        ctx.moveTo(50, 20);
+        ctx.lineTo(50, 0);
+        ctx.lineTo(10, 0);
+        ctx.lineTo(10, 180);
         ctx.stroke();
       }
 

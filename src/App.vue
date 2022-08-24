@@ -1,10 +1,18 @@
 <template>
+  <header>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <img src="@/assets/nisz-logo.png" alt="nisz logo">
+        </div>
+      </div>
+    </div>
+  </header>
   <div id="game">
     <b-card header="Game" border-variant="primary" bg-variant="light" header-bg-variant="primary"
         header-text-variant="white">
-
         <div class="container">
-          <div class="row">
+          <div class="row row--hangman">
             <div class="col-lg-5">
               <div id="gameComponent">
                 <StickMan :fails="fails"/>
@@ -22,12 +30,7 @@
             </div>
           </div>
         </div>
-     
-
     </b-card>
-
-
-    <br/>
  </div>
 </template>
 
@@ -58,10 +61,13 @@ export default {
     window.addEventListener('keyup', this.keyPressed);
     this.restart();
   },
+  beforeCreate: function() {
+      document.body.className = 'home';
+  },
   methods: {
     restart: function() {
       let min = 0;
-      let max = this.words.length-1;
+      let max = this.words.length - 1;
       let index = parseInt(Math.random() * (max - min) + min);
       this.secretWord = this.words[index].toUpperCase();
       this.guessedWord = "";
@@ -105,10 +111,30 @@ export default {
 </script>
 
 <style>
+
+body.home {
+  background-color: #e9e6e6;
+}
+
+header {
+  padding: 10px;
+  background-color: #bababa;
+}
+
+header img {
+  max-width: 30px;
+}
+
+.row--hangman {
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0px 0px 4px 2px rgba(115,115,115,0.5);
+}
+
 #game {
-  text-align: center;
-  margin-top: 10px;
   min-width: 300px;
+  padding: 20px;
+  text-align: center;
 }
 #gameComponent {
   margin-top: 7px;
